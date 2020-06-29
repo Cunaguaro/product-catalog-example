@@ -1,0 +1,7 @@
+node_modules
+.aws_sam
+public/react-src/
+tests/
+__tests__/
+env.json
+samconfig.toml
