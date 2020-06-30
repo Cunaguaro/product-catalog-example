@@ -16,10 +16,14 @@ phases:
   build:
     commands:
       # Use AWS SAM to package the application by using AWS CloudFormation
-      - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.yml
+      # - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.yml
+      - echo "Starting SAM packaging `date` in `pwd`"
+      - aws cloudformation package --template-file template.yaml --s3-bucket $BUILD_OUTPUT_BUCKET --output-template-file packaged.yaml
 artifacts:
-  type: zip
   files:
-    - template-export.yml
+    # list of local files relative to this build environment that will be added to the final artifact (zip)
+    - packaged.yaml
+  discard-paths: yes
+
 
 
