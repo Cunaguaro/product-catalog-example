@@ -48,7 +48,7 @@ Resources:
             - !Ref 'AWS::AccountId'
             - pdf
             - files
-          EMAIL_SQS: !sub EmailQueue
+          EMAIL_SQS: !Sub EmailQueue
       Policies:
         - AWSLambdaBasicExecutionRole
       Events:
