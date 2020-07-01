@@ -14,8 +14,7 @@ phases:
       # Remove all dependencies not needed for the Lambda deployment package (the packages from devDependencies in package.json)
       - npm prune --production
       #
-      export WEBSITE_S3_PREFIX="https://product-catalog-us-west-2-960001015395-static-assets.s3-us-west-2.amazonaws.com/static/"
-      sed -i -e "s|/static/|$WEBSITE_S3_PREFIX|g" public/index.html
+      sed -i -e "s|/static/|$STATIC_ASSETS_PREFIX|g" public/index.html
       # 
       - aws s3 cp --recursive public/ s3://$STATIC_ASSETS_BUCKET/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
   build:

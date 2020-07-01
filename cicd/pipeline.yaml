@@ -111,6 +111,9 @@ Resources:
                   - 
                     Name: STATIC_ASSETS_BUCKET
                     Value: !Ref BuildStaticAssetsBucket
+                  - 
+                    Name: STATIC_ASSETS_PREFIX
+                    Value: https://product-catalog-us-west-2-960001015395-static-assets.s3-us-west-2.amazonaws.com/static/
             Cache:
               Type: S3
               Location: !Sub ${BuildArtifactsBucket}/codebuild-cache
