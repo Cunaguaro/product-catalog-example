@@ -12,10 +12,10 @@ Resources:
         BucketName: !Join
           - '-'
           - - product
-          - catalog
-          - !Ref 'AWS::Region'
-          - !Ref 'AWS::AccountId'
-          - Static-Assets
+            - catalog
+            - !Ref 'AWS::Region'
+            - !Ref 'AWS::AccountId'
+            - Static-Assets
         AccessControl: PublicRead
         WebsiteConfiguration:
           IndexDocument: index.html
