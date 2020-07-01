@@ -66,7 +66,32 @@ Resources:
 ########  ##     ##  ##  ##       ##     ## 
 ##     ## ##     ##  ##  ##       ##     ## 
 ##     ## ##     ##  ##  ##       ##     ## 
-########   #######  #### ######## ########  
+########   #######  #### ######## ######## 
+
+    # CodeBuild project and resources (S3 Bucket for build artifacts, Role, Project)
+    BuildStaticAssetsBucket:
+        Type: AWS::S3::Bucket
+        Properties:
+          BucketName: !Join
+            - '-'
+            - - product
+              - catalog
+              - !Ref 'AWS::Region'
+              - !Ref 'AWS::AccountId'
+              - static-assets
+          AccessControl: PublicRead
+          WebsiteConfiguration:
+            IndexDocument: index.html
+            ErrorDocument: error.html
+          Tags: 
+            - 
+              Key: "Stack"
+              Value: !Ref AWS::StackName
+            -
+              Key: "Project"
+              Value: product-catalog-example
+        DeletionPolicy: Retain
+        UpdateReplacePolicy: Retain
 
     CodeBuildProject:
         Type: AWS::CodeBuild::Project
@@ -85,7 +110,7 @@ Resources:
                     Value: !Ref BuildArtifactsBucket
                   - 
                     Name: STATIC_ASSETS_BUCKET
-                    Value: !Ref BuildArtifactsBucket
+                    Value: product-catalog-us-west-2-960001015395-static-assets
             Cache:
               Type: S3
               Location: !Sub ${BuildArtifactsBucket}/codebuild-cache
@@ -301,6 +326,18 @@ Resources:
                           - 's3:PutObject'
                         Resource:
                           - !Sub 'arn:aws:s3:::${BuildArtifactsBucket}/*'
+                - PolicyName: CodeBuildStaticAssetsBucket
+                  PolicyDocument:
+                    Version: '2012-10-17'
+                    Statement:
+                      - 
+                        Effect: Allow
+                        Action: 
+                          - 's3:GetObject'
+                          - 's3:GetObjectVersion'
+                          - 's3:PutObject'
+                        Resource:
+                          - !Sub 'arn:aws:s3:::${BuildStaticAssetsBucket}/*'
                 - PolicyName: CodeBuildParameterStore
                   PolicyDocument:
                     Version: '2012-10-17'
@@ -405,6 +442,10 @@ Outputs:
     BuildArtifactS3Bucket:
       Description: Amazon S3 Bucket for Pipeline and Build artifacts
       Value: !Ref BuildArtifactsBucket
+
+    BuildStaticAssetsS3Bucket:
+      Description: Amazon S3 Bucket for static assets 
+      Value: !Ref BuildStaticAssetsBucket
 
     CodeBuildProject:
       Description: CodeBuild Project name
