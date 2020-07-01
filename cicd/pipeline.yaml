@@ -110,7 +110,7 @@ Resources:
                     Value: !Ref BuildArtifactsBucket
                   - 
                     Name: STATIC_ASSETS_BUCKET
-                    Value: product-catalog-us-west-2-960001015395-static-assets
+                    Value: !Ref BuildStaticAssetsBucket
             Cache:
               Type: S3
               Location: !Sub ${BuildArtifactsBucket}/codebuild-cache
