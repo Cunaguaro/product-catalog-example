@@ -13,6 +13,8 @@ phases:
       - rm -rf ./__tests__
       # Remove all dependencies not needed for the Lambda deployment package (the packages from devDependencies in package.json)
       - npm prune --production
+      # 
+      - aws s3 cp --recursive public/ s3://$STATIC_ASSETS_BUCKET/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
   build:
     commands:
       # Use AWS SAM to package the application by using AWS CloudFormation
