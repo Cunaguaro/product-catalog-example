@@ -83,6 +83,9 @@ Resources:
                   - 
                     Name: BUILD_OUTPUT_BUCKET
                     Value: !Ref BuildArtifactsBucket
+                  - 
+                    Name: STATIC_ASSETS_BUCKET
+                    Value: !Ref BuildArtifactsBucket
             Cache:
               Type: S3
               Location: !Sub ${BuildArtifactsBucket}/codebuild-cache
