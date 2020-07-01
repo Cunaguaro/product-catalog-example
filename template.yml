@@ -37,7 +37,7 @@ Resources:
               - - 'arn:aws:s3:::'
                 - !Ref StaticWebAssetsBucket
                 - /*
-      Bucket: !Ref S3Bucket
+      Bucket: !Ref StaticWebAssetsBucket
   EmailQueue: 
     Type: AWS::SQS::Queue
     Properties: 
