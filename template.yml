@@ -15,7 +15,7 @@ Resources:
             - catalog
             - !Ref 'AWS::Region'
             - !Ref 'AWS::AccountId'
-            - Static-Assets
+            - static-assets
         AccessControl: PublicRead
         WebsiteConfiguration:
           IndexDocument: index.html
