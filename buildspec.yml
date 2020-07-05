@@ -15,6 +15,7 @@ phases:
       - npm prune --production
       #
       - sed -i -e "s|/static/|$STATIC_ASSETS_PREFIX|g" public/index.html
+      - sed -i -e "s|/images/|$IMAGES_ASSETS_PREFIX|g" public/index.html
       # 
       - aws s3 cp --recursive public/ s3://$STATIC_ASSETS_BUCKET/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
   build:

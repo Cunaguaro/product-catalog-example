@@ -114,6 +114,9 @@ Resources:
                   - 
                     Name: STATIC_ASSETS_PREFIX
                     Value: https://product-catalog-us-west-2-960001015395-static-assets.s3-us-west-2.amazonaws.com/static/
+                  - 
+                    Name: IMAGES_ASSETS_PREFIX
+                    Value: https://product-catalog-us-west-2-960001015395-static-assets.s3-us-west-2.amazonaws.com/images/
             Cache:
               Type: S3
               Location: !Sub ${BuildArtifactsBucket}/codebuild-cache
