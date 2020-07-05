@@ -6,6 +6,8 @@ var fs = require('fs');
 var path = require('path');
 
 exports.getHomePageHandler = async (event) => {
+
+    console.log(event)
     try {
         result = {
             statusCode: 200,
