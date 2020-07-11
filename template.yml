@@ -63,6 +63,7 @@ Resources:
           EMAIL_SQS: !Sub EmailQueue
       Policies:
         - AWSLambdaBasicExecutionRole
+        - AmazonS3FullAccess
       Events:
         GetEvent:
           Type: Api
