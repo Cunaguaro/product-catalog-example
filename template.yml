@@ -79,13 +79,12 @@ Resources:
       Environment:
         Variables:
           WEBSITE_S3_BUCKET: !Join
-          - '-'
-          - - cunaguaro
-            - product-catalogue
-            - !Ref 'AWS::Region'
-            - !Ref 'AWS::AccountId'
-            - send
-            - email
+            - '-'
+            - - product
+              - catalog
+              - !Ref 'AWS::Region'
+              - !Ref 'AWS::AccountId'
+              - static-assets
           SMTP_USER: !Ref 'smtpUser'
           SMTP_PASS: !Ref 'smtpPass'
       Policies:
