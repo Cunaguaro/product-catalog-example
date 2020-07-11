@@ -60,10 +60,11 @@ Resources:
               - !Ref 'AWS::Region'
               - !Ref 'AWS::AccountId'
               - static-assets
-          EMAIL_SQS: !Sub EmailQueue
+          EMAIL_SQS: !Ref EmailQueue
       Policies:
         - AWSLambdaBasicExecutionRole
         - AmazonS3FullAccess
+        - AWSLambdaSQSQueueExecutionRole
       Events:
         GetEvent:
           Type: Api
