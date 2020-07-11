@@ -89,6 +89,7 @@ Resources:
           SMTP_PASS: !Ref 'smtpPass'
       Policies:
         - AWSLambdaBasicExecutionRole
+        - AWSLambdaSQSQueueExecutionRole
 
   LambdaFunctionEventSourceMapping:
     Type: AWS::Lambda::EventSourceMapping
