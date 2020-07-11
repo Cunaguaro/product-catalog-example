@@ -5,14 +5,16 @@ Description: >-
 Transform:
 - AWS::Serverless-2016-10-31
 Parameters:
+  
   smtpUser:
-    Type: String
-    Description: The name for a project pipeline stage, such as Staging or Prod, for which resources are provisioned and deployed.
-    Default: 'smtpUser'
+    Description: SMTP user
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /service/product-catalog-example/smtp/smtpUser
   smtpPass:
-    Type: String
-    Description: The name for a project pipeline stage, such as Staging or Prod, for which resources are provisioned and deployed.
-    Default: 'smtpPass'
+    Description: SMTP password
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /service/product-catalog-example/smtp/smtpPass
+
 Resources:
   EmailQueue: 
     Type: AWS::SQS::Queue
