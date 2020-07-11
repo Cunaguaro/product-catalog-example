@@ -4,7 +4,15 @@ Description: >-
 
 Transform:
 - AWS::Serverless-2016-10-31
-
+Parameters:
+  smtpUser:
+    Type: String
+    Description: The name for a project pipeline stage, such as Staging or Prod, for which resources are provisioned and deployed.
+    Default: 'smtpUser'
+  smtpPass:
+    Type: String
+    Description: The name for a project pipeline stage, such as Staging or Prod, for which resources are provisioned and deployed.
+    Default: 'smtpPass'
 Resources:
   EmailQueue: 
     Type: AWS::SQS::Queue
@@ -57,3 +65,29 @@ Resources:
           Properties:
             Path: /generate-pdf
             Method: post
+  SendEmail:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/send-email.sendProductCatalog
+      Runtime: nodejs12.x
+      Timeout: 5
+      Environment:
+        Variables:
+          WEBSITE_S3_BUCKET: !Join
+          - '-'
+          - - cunaguaro
+            - product-catalogue
+            - !Ref 'AWS::Region'
+            - !Ref 'AWS::AccountId'
+            - pdf
+            - files
+          SMTP_USER: !Ref 'smtpUser'
+          SMTP_PASS: !Ref 'smtpPass'
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /send-product-catalog
+            Method: GET
