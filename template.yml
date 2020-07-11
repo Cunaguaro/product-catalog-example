@@ -83,15 +83,17 @@ Resources:
             - product-catalogue
             - !Ref 'AWS::Region'
             - !Ref 'AWS::AccountId'
-            - pdf
-            - files
+            - send
+            - email
           SMTP_USER: !Ref 'smtpUser'
           SMTP_PASS: !Ref 'smtpPass'
       Policies:
         - AWSLambdaBasicExecutionRole
-      Events:
-        GetEvent:
-          Type: Api
-          Properties:
-            Path: /send-product-catalog
-            Method: GET
+
+  LambdaFunctionEventSourceMapping:
+    Type: AWS::Lambda::EventSourceMapping
+    Properties:
+      BatchSize: 10
+      Enabled: true
+      EventSourceArn: !GetAtt EmailQueue.Arn
+      FunctionName: !GetAtt SendEmail.Arn

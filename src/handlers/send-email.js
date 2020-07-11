@@ -6,20 +6,16 @@
 
 exports.sendProductCatalog = async (event) => {
 
-    console.log(event)
-    try {
-        result = {
-            statusCode: 200,
-            body: "hola from send email",
-            headers: { 'content-type': 'text/html' }
-        };
-
-    } catch (error) {
-        result = {
-            statusCode: 500,
-            body: error.toString(),
-            headers: { 'content-type': 'text/html' }
-        };
-    }
-    return result
+    const prossessEmailQueue = new Promise((resolve, reject) => {
+        event.Records.forEach(async record => {
+          const { body } = record;
+          const data = JSON.parse(body);
+          // var contents = fs.readFileSync(`public${path.sep}email_${data.lang}.html`);
+          const htmlstream = fs.createReadStream(`public${path.sep}email_${data.lang}.html`);
+          const emailData = { email: data.email, htmlstream: htmlstream, attachment: data.fileName }
+          const result = email.SendEmail(emailData)
+            .then(result => resolve(result));
+        });
+      })
+      await prossessEmailQueue;
 }
