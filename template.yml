@@ -54,13 +54,12 @@ Resources:
       Environment:
         Variables:
           WEBSITE_S3_BUCKET: !Join
-          - '-'
-          - - cunaguaro
-            - product-catalogue
-            - !Ref 'AWS::Region'
-            - !Ref 'AWS::AccountId'
-            - pdf
-            - files
+            - '-'
+            - - product
+              - catalog
+              - !Ref 'AWS::Region'
+              - !Ref 'AWS::AccountId'
+              - static-assets
           EMAIL_SQS: !Sub EmailQueue
       Policies:
         - AWSLambdaBasicExecutionRole
