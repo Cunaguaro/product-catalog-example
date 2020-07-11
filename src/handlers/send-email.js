@@ -3,6 +3,15 @@
  * A Lambda function that sends emails
  */
 
+// const aws = require('aws-sdk');
+// const s3 = new aws.S3();
+
+var fs = require('fs');
+var path = require('path');
+// const pdf = require('./pdf');
+// const sqs = require('./awsSQS');
+const email = require('./email');
+
 
 exports.sendProductCatalog = async (event) => {
 
