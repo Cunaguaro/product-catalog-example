@@ -30,7 +30,9 @@ Resources:
         - !Ref 'AWS::AccountId'
         - emailqueue
       Tags: 
-        - Project: "product-catalog-example"
+        -
+          Key: "Project"
+          Value: product-catalog-example
   getHomePage:
     Type: AWS::Serverless::Function
     Properties:
