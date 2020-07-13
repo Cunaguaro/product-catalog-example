@@ -1,7 +1,6 @@
 const AWS = require('aws-sdk');
 AWS.config.update({ region: 'us-west-2' });
 const sqs = new AWS.SQS({ apiVersion: '2012-11-05' });
-
 exports.sendSQSMenssage = async (data) => {
     
     const queueUrl = process.env.EMAIL_SQS;
