@@ -47,8 +47,7 @@ Resources:
           Properties:
             Path: /
             Method: GET
-      Tags: 
-        - Project: "product-catalog-example"
+
   generatePDF:
     Type: AWS::Serverless::Function
     Properties:
@@ -75,8 +74,7 @@ Resources:
           Properties:
             Path: /generate-pdf
             Method: post
-      Tags: 
-        - Project: "product-catalog-example"
+
   SendEmail:
     Type: AWS::Serverless::Function
     Properties:
@@ -97,8 +95,6 @@ Resources:
       Policies:
         - AWSLambdaBasicExecutionRole
         - AWSLambdaSQSQueueExecutionRole
-      Tags: 
-        - Project: "product-catalog-example"
 
   LambdaFunctionEventSourceMapping:
     Type: AWS::Lambda::EventSourceMapping
