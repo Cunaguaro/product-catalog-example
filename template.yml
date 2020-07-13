@@ -30,11 +30,7 @@ Resources:
         - !Ref 'AWS::AccountId'
         - emailqueue
       Tags: 
-        - 
-          Key: "Stack"
-          Value: !Ref AWS::StackName
-        -
-          Key: "Project"
+        - Key: "Project"
           Value: product-catalog-example
   getHomePage:
     Type: AWS::Serverless::Function
@@ -53,11 +49,7 @@ Resources:
             Path: /
             Method: GET
       Tags: 
-        - 
-          Key: "Stack"
-          Value: !Ref AWS::StackName
-        -
-          Key: "Project"
+        - Key: "Project"
           Value: product-catalog-example
   generatePDF:
     Type: AWS::Serverless::Function
@@ -86,11 +78,7 @@ Resources:
             Path: /generate-pdf
             Method: post
       Tags: 
-        - 
-          Key: "Stack"
-          Value: !Ref AWS::StackName
-        -
-          Key: "Project"
+        - Key: "Project"
           Value: product-catalog-example
   SendEmail:
     Type: AWS::Serverless::Function
@@ -113,11 +101,7 @@ Resources:
         - AWSLambdaBasicExecutionRole
         - AWSLambdaSQSQueueExecutionRole
       Tags: 
-        - 
-          Key: "Stack"
-          Value: !Ref AWS::StackName
-        -
-          Key: "Project"
+        - Key: "Project"
           Value: product-catalog-example
 
   LambdaFunctionEventSourceMapping:
