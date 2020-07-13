@@ -49,6 +49,9 @@ Resources:
           Properties:
             Path: /
             Method: GET
+      Tags:
+        Project: "product-catalog-example"
+
 
   generatePDF:
     Type: AWS::Serverless::Function
