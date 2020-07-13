@@ -30,7 +30,7 @@ Resources:
         - !Ref 'AWS::AccountId'
         - emailqueue
       Tags: 
-        - Project: product-catalog-example
+        - Project: "product-catalog-example"
   getHomePage:
     Type: AWS::Serverless::Function
     Properties:
@@ -48,7 +48,7 @@ Resources:
             Path: /
             Method: GET
       Tags: 
-        - Project: product-catalog-example
+        - Project: "product-catalog-example"
   generatePDF:
     Type: AWS::Serverless::Function
     Properties:
@@ -76,7 +76,7 @@ Resources:
             Path: /generate-pdf
             Method: post
       Tags: 
-        - Project: product-catalog-example
+        - Project: "product-catalog-example"
   SendEmail:
     Type: AWS::Serverless::Function
     Properties:
@@ -98,7 +98,7 @@ Resources:
         - AWSLambdaBasicExecutionRole
         - AWSLambdaSQSQueueExecutionRole
       Tags: 
-        - Project: product-catalog-example
+        - Project: "product-catalog-example"
 
   LambdaFunctionEventSourceMapping:
     Type: AWS::Lambda::EventSourceMapping
