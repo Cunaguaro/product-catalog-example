@@ -2,11 +2,10 @@
 'use strict';
 const aws = require('aws-sdk');
 const s3 = new aws.S3();
-
 var fs = require('fs');
 var path = require('path');
-const pdf = require('./pdf');
-const sqs = require('./awsSQS');
+const pdf = require('../pdf/pdf');
+const sqs = require('../sqs/awsSQSawsSQS');
 // const email = require('./email');
 
 if (process.env.NODE_ENV !== 'production') {
