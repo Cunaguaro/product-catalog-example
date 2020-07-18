@@ -2,7 +2,6 @@
 
 ![AWS template designer](https://product-catalog-us-west-2-960001015395-static-assets.s3-us-west-2.amazonaws.com/images/git-repository/template-designer.png)
 
-
 ![Soluton diagram](https://product-catalog-us-west-2-960001015395-static-assets.s3-us-west-2.amazonaws.com/images/git-repository/diagram.png)
 
 This project contains source code and supporting files for a serverless application that you can deploy with the AWS Serverless Application Model (AWS SAM) command line interface (CLI). It includes the following files and folders:
