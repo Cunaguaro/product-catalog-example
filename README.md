@@ -89,6 +89,7 @@ Resources:
             QueueName: !GetAtt MyQueue.QueueName
 ```
 
+
 The dead-letter queue is a location for Lambda to send events that could not be processed. It's only used if you invoke your function asynchronously, but it's useful here to show how you can modify your application's resources and function configuration.
 
 Deploy the updated application.
