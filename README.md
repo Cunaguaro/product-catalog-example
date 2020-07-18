@@ -72,6 +72,7 @@ The application template uses AWS SAM to define application resources. AWS SAM i
 
 Update `template.yml` to add a dead-letter queue to your application. In the **Resources** section, add a resource named **MyQueue** with the type **AWS::SQS::Queue**. Then add a property to the **AWS::Serverless::Function** resource named **DeadLetterQueue** that targets the queue's Amazon Resource Name (ARN), and a policy that grants the function permission to access the queue.
 
+
 ```yaml
 Resources:
   MyQueue:
@@ -88,7 +89,6 @@ Resources:
         - SQSSendMessagePolicy:
             QueueName: !GetAtt MyQueue.QueueName
 ```
-
 
 The dead-letter queue is a location for Lambda to send events that could not be processed. It's only used if you invoke your function asynchronously, but it's useful here to show how you can modify your application's resources and function configuration.
 
