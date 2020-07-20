@@ -1,5 +1,25 @@
 # cunaguaro product cataloge
 
+Este repositorio tiene como finalidad demostrar el uso SAM (serverless aplication model).
+
+- AWS lambda function
+- SQS
+- UI React
+- AWS ApiGateway
+- AWS CloudFormation
+- AWS DevTools
+- AWS S3
+
+Usando un template de cloudformation es posible crear un stack con todos los recursos nocesarios para
+ejecutar una aplicacion en aws cloud.
+
+el flujo de la aplicacion es controlado por medio de un template que contrulle un pipeline. este pipeline
+sera responsable de crear los recursos necesarios que usara la aplicacion
+
+https://github.com/aws-samples/cookiecutter-aws-sam-pipeline
+
+
+
 ![AWS template designer](https://product-catalog-us-west-2-960001015395-static-assets.s3-us-west-2.amazonaws.com/images/git-repository/template-designer.png)
 
 ![Soluton diagram](https://product-catalog-us-west-2-960001015395-static-assets.s3-us-west-2.amazonaws.com/images/git-repository/diagram.png)
