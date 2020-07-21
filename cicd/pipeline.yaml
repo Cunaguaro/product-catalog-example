@@ -12,9 +12,7 @@ Description: >
       AWS CloudFormation: Manages SAM templates and creates the Infrastructure necessary for each environment
       AWS IAM: Manages Identity and Access across Services outlined above
 
-
 Parameters:
-
     GithubRepo:
       Description: Gitub Repository name
       Type: AWS::SSM::Parameter::Value<String>
@@ -160,7 +158,7 @@ Resources:
                       Configuration:
                         Owner: !Ref GithubUser
                         Repo: !Ref GithubRepo
-                        Branch: master
+                        Branch: production
                         OAuthToken: !Ref GithubToken
                       OutputArtifacts:
                         - Name: SourceCodeAsZip

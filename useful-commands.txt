@@ -1,0 +1,11 @@
+//// Crear un stack 
+aws cloudformation create-stack \
+    --stack-name product-catalog-example-pipeline \
+    --template-body file://pipeline.yaml \
+    --capabilities CAPABILITY_NAMED_IAM
+
+//// update an  stack 
+aws cloudformation update-stack \
+    --stack-name product-catalog-example-pipeline \
+    --template-body file://cicd/pipeline.yaml \
+    --capabilities CAPABILITY_NAMED_IAM
